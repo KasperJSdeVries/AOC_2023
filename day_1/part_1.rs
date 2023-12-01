@@ -1,4 +1,4 @@
-use std::{env, fs::File, io::Read};
+use std::{env, fs::File, io::Read, iter::FromIterator};
 
 fn main() -> std::io::Result<()> {
     let file_name = env::args().nth(1).expect("Please provide input file");
