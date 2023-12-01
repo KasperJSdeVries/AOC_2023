@@ -10,20 +10,14 @@ fn main() -> std::io::Result<()> {
     let result: i32 = buf
         .lines()
         .map(|line| {
-            let mut first_and_last = String::new();
-            first_and_last += &line
+            let digits = line
                 .chars()
-                .find(|x| x.is_ascii_digit())
-                .unwrap()
-                .to_string();
-            first_and_last += &line
-                .chars()
-                .rev()
-                .find(|x| x.is_ascii_digit())
-                .unwrap()
-                .to_string();
+                .filter(|x| x.is_ascii_digit())
+                .collect::<Vec<char>>();
 
-            first_and_last.parse::<i32>().unwrap()
+            String::from_iter([digits.first().unwrap(), digits.last().unwrap()])
+                .parse::<i32>()
+                .unwrap()
         })
         .sum();
 
