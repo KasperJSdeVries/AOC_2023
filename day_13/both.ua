@@ -16,7 +16,13 @@ Solve! ← (
 )
 
 PartOne ← Solve!≍ Parse
-PartTwo ← Solve!(=1/+♭≠) Parse
+PartTwo ← (
+  Parse
+  Solve!(
+    /+♭≠ # Counts amount of differences between two arrays
+    =1   # If its only one we have found it
+  )
+)
 
 &fras "input.txt"
 
